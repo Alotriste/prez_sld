@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import MainPage from './components/mainPage/MainPage';
+import PageSlids from './components/slid/PageSlids';
+import { useSelector } from 'react-redux';
 
 function App() {
+ const changePage = useSelector(state => state.presentation.togglePage)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='wrapper'>
+    {changePage?<MainPage/>:<PageSlids/>}
     </div>
   );
 }
